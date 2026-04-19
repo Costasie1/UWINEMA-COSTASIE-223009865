@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration Form</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('students.jpg') no-repeat center center/cover;
+            background-color: #f7f7f7;
+        }
+
+        h2 {
+            text-align: center;
+            text-decoration: underline;
+            padding-top: 20px;
+        }
+
+        .container {
+            width: 800px;
+            margin: 30px auto;
+            background: white;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+
+       
+        .form-table {
+            width: 70%;
+            border-collapse: collapse;
+            align-content: center;
+        }
+
+        .form-table td {
+            padding: 8px;
+            vertical-align: middle;
+        }
+
+        .label-cell {
+            width: 25%;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        input[type="text"], input[type="email"], select, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+   
+        .qual-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .qual-table th, .qual-table td {
+            border: 1px solid #ccc;
+            padding: 5px;
+            font-size: 12px;
+        }
+
+        .qual-table input {
+            border: none;
+            width: 95%;
+            outline: none;
+        }
+
+        .hint {
+            font-size: 11px;
+            color: #666;
+            margin-right: 20px;
+        }
+
+       
+        .btn-group {
+            text-align: center;
+            margin-top: 20px;
+            
+        }
+
+        .btn {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 1px solid #999;
+            background: lightpink;
+            color: whitesmoke;
+            border: none;
+        }
+
+        .btn:hover { background: black; }
+    </style>
+</head>
+
+<body>
+
+<h2>STUDENT REGISTRATION FORM</h2>
+
+<div class="container">
+    <form action="connect.php" method="POST">
+        <table class="form-table">
+            <tr>
+                <td class="label-cell">FIRST NAME</td>
+                <td><input type="text" name="first_name" required></td>
+            </tr>
+            <tr>
+                <td class="label-cell">LAST NAME</td>
+                <td><input type="text" name="last_name" required></td>
+            </tr>
+
+            <tr>
+                <td class="label-cell">DATE OF BIRTH</td>
+                <td>
+                    <select name="day" style="width: 80px;">
+                        <option>Day:</option>
+                        <?php for($d=1;$d<=31;$d++) echo "<option>$d</option>"; ?>
+                    </select>
+                    <select name="month" style="width: 100px;">
+                        <option>Month:</option>
+                        <option>Jan</option><option>Feb</option><option>Mar</option><option>Apr</option>
+                        <option>May</option><option>Jun</option><option>Jul</option><option>Aug</option>
+                        <option>Sep</option><option>Oct</option><option>Nov</option><option>Dec</option>
+                    </select>
+                    <select name="year" style="width: 80px;">
+                        <option>Year:</option>
+                        <?php for($y=2025;$y>=1990;$y--) echo "<option>$y</option>"; ?>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="label-cell">EMAIL ID</td>
+                <td><input type="email" name="email"></td>
+            </tr>
+            <tr>
+                <td class="label-cell">MOBILE NUMBER</td>
+                <td><input type="text" name="mobile"></td>
+            </tr>
+
+            <tr>
+                <td class="label-cell">GENDER</td>
+                <td>
+                    Male <input type="radio" name="gender" value="Male">
+                    Female <input type="radio" name="gender" value="Female">
+                </td>
+            </tr>
+
+            <tr>
+                <td class="label-cell">ADDRESS</td>
+                <td><textarea name="address" style="height: 80px;"></textarea></td>
+            </tr>
+            <tr>
+                <td class="label-cell">CITY</td>
+                <td><input type="text" name="city"></td>
+            </tr>
+            <tr>
+                <td class="label-cell">PIN CODE</td>
+                <td><input type="text" name="pin_code"></td>
+            </tr>
+            <tr>
+                <td class="label-cell">STATE</td>
+                <td><input type="text" name="state"></td>
+            </tr>
+            <tr>
+                <td class="label-cell">COUNTRY</td>
+                <td><input type="text" name="country" value="India"></td>
+            </tr>
+
+            <tr>
+                <td class="label-cell">HOBBIES</td>
+                <td>
+                    Drawing <input type="checkbox" name="hobbies[]" value="Drawing">
+                    Singing <input type="checkbox" name="hobbies[]" value="Singing">
+                    Dancing <input type="checkbox" name="hobbies[]" value="Dancing">
+                    Sketching <input type="checkbox" name="hobbies[]" value="Sketching"><br>
+                    Others <input type="checkbox" name="hobbies[]" value="Others">
+                    <input type="text" name="other_hobby" style="width: 200px; margin-top: 5px;">
+                </td>
+            </tr>
+
+            <tr>
+                <td class="label-cell">QUALIFICATION</td>
+                <td>
+                    <table class="qual-table">
+                        <tr>
+                            <th>Sl.No.</th>
+                            <th>Examination</th>
+                            <th>Board</th>
+                            <th>Percentage</th>
+                            <th>Year of Passing</th>
+                        </tr>
+                        <tr>
+                            <td>1</td><td>Class X</td>
+                            <td><input type="text" name="board1"></td>
+                            <td><input type="text" name="perc1"></td>
+                            <td><input type="text" name="year1"></td>
+                        </tr>
+                        <tr>
+                            <td>2</td><td>Class XII</td>
+                            <td><input type="text" name="board2"></td>
+                            <td><input type="text" name="perc2"></td>
+                            <td><input type="text" name="year2"></td>
+                        </tr>
+                        <tr>
+                            <td>3</td><td>Graduation</td>
+                            <td><input type="text" name="board3"></td>
+                            <td><input type="text" name="perc3"></td>
+                            <td><input type="text" name="year3"></td>
+                        </tr>
+                        <tr>
+                            <td>4</td><td>Masters</td>
+                            <td><input type="text" name="board4"></td>
+                            <td><input type="text" name="perc4"></td>
+                            <td><input type="text" name="year4"></td>
+                        </tr>
+                    </table>
+                    <div style="text-align: center;">
+                        <span class="hint">(10 char max)</span>
+                        <span class="hint">(upto 2 decimal)</span>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="label-cell">COURSES APPLIED FOR</td>
+                <td>
+                    BIT<input type="radio" name="course" value="BIT">
+                    ACC/FIN<input type="radio" name="course" value="B.Com">
+                    TLM<input type="radio" name="course" value="B.Sc">
+                    ECONOMICS <input type="radio" name="course" value="B.A">
+                </td>
+            </tr>
+        </table>
+
+        <div class="btn-group">
+            <input type="submit" value="Submit" class="btn">
+            <input type="reset" value="Reset" class="btn">
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
